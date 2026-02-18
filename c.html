@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minister Fakir Mahbub Anam Swapan - Official Portal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+        :root {
+            --primary: #006a4e;
+            /* Bangladesh Green */
+            --secondary: #f42a41;
+            /* Bangladesh Red */
+            --accent: #2563eb;
+            /* Tech Blue */
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.7);
+            --gradient-primary: linear-gradient(135deg, #006a4e 0%, #059669 100%);
+            --gradient-hero: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        /* Utils */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .section-padding {
+            padding: 5rem 0;
+        }
+        .badge {
+            background: rgba(0, 106, 78, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 106, 78, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 106, 78, 0.3);
+        }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradient-hero);
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 106, 78, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            top: -100px;
+            right: -100px;
+            border-radius: 50%;
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin: 1.5rem 0;
+            color: var(--dark);
+        }
+        .hero-text h1 span {
+            color: var(--primary);
+            background: linear-gradient(135deg, #006a4e 0%, #0d9488 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .minister-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+        }
+        .minister-img-placeholder {
+            width: 100%;
+            height: 450px;
+            background: #e2e8f0;
+            border-radius: 16px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .minister-img-placeholder::after {
+            content: 'Minister Photo';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #94a3b8;
+            font-weight: bold;
+        }
+        .minister-details {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        .minister-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        .minister-details p {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        /* Recent Works Slider */
+        .slider-section {
+            background: white;
+            position: relative;
+        }
+        .slider-container {
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+        .slider-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide-card {
+            min-width: 350px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f1f5f9;
+        }
+        .slide-img {
+            height: 200px;
+            background: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        .slide-content {
+            padding: 1.5rem;
+        }
+        .slide-content h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        .slide-content p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        .slider-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #e2e8f0;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        /* Direct Connect / Feed */
+        .connect-section {
+            background: #f0fdf4;
+            position: relative;
+        }
+        .connect-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        .connect-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 106, 78, 0.1);
+        }
+        .minister-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .feed-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        /* Biography Section */
+        .bio-section {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+        }
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .bio-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+        /* Admin Preview (Condensed) */
+        .admin-section {
+            background: #e2e8f0;
+            text-align: center;
+        }
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+        }
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: #f0fdf4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary);
+            font-size: 2rem;
+            transition: transform 0.5s;
+        }
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg);
+            background: var(--primary);
+            color: white;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        .service-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span style="color:var(--secondary); font-size: 2rem;">●</span>
+                    <div>
+                        <div style="font-size: 0.9rem; color: #64748b; font-weight: 500;">Govt. of People's Republic of
+                            Bangladesh</div>
+                        <div>ICT Division</div>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="#home">প্রচ্ছদ (Home)</a>
+                    <a href="#bio">জীবনী (Biography)</a>
+                    <a href="#works">উন্নয়ন প্রকল্প (Works)</a>
+                    <a href="#connect" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> সরাসরি যোগাযোগ
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text animate-fade-in">
+                    <span class="badge">Minister of Science & Technology</span>
+                    <h1>ফকির মাহবুব আনাম স্বপন<br><span>(Fakir Mahbub Anam Swapan)</span></h1>
+                    <p>Honorable Minister of Posts, Telecommunications and Information Technology.<br>Member of
+                        Parliament, Tangail-1 (Madhupur-Dhanbari).</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="#connect" class="btn-primary">
+                            আপনার সমস্যা জানান
+                        </a>
+                        <a href="#works" class="btn-primary"
+                            style="background: white; color: var(--dark); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+                            <i class="fas fa-play-circle" style="color: var(--secondary);"></i> কার্যক্রম দেখুন
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="minister-card">
+                        <div class="minister-img-placeholder">
+                            <!-- Placeholder for actual image -->
+                            <i class="fas fa-user-tie"
+                                style="font-size: 10rem; color: #cbd5e1; margin-bottom: -1rem; opacity: 0.5;"></i>
+                        </div>
+                        <div class="minister-details">
+                            <h3>Fakir Mahbub Anam Swapan</h3>
+                            <p>Minister, Ministry of Posts & Telecommunications</p>
+                            <p style="font-size: 0.9rem; color: #64748b; margin-top: 0.5rem;">Govt. of Prime Minister
+                                Tarique Rahman</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Citizen Services (Added from V1) -->
+    <section id="services" class="section-padding" style="background: white;">
+        <div class="container">
+            <div class="section-title" style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <span class="badge">Citizen Services</span>
+                <h2 style="font-size: 2.5rem; margin-top: 0.5rem;">নাগরিক সেবা (Citizen Services)</h2>
+                <p style="color: #64748b; margin-top: 1rem;">জনগণের দোরগোড়ায় সেবা পৌঁছে দিতে আমরা বদ্ধপরিকর।</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3>অভিযোগ জানান</h3>
+                    <p>সরাসরি মন্ত্রী মহাদয়ের দপ্তরে আপনার এলাকার সমস্যা বা অভিযোগ জানান। দ্রুত সমাধানের নিশ্চয়তা।</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>মন্ত্রীর মতামত</h3>
+                    <p>সাম্প্রতিক বিষয় নিয়ে মন্ত্রীর ব্লগ এবং ভিডিও বার্তা দেখুন। জানুন সরকারের আগামীর পরিকল্পনা।</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>ফিডব্যাক দিন</h3>
+                    <p>আমাদের সেবা সম্পর্কে আপনার মূল্যবান মতামত জানান। আপনার পরামর্শ আমাদের চলার পথের পাথেয়।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Recent Works Slider -->
+    <section id="works" class="slider-section section-padding">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: end; margin-bottom: 2rem;">
+                <div>
+                    <span class="badge" style="background: #eff6ff; color: var(--accent);">Recent Updates</span>
+                    <h2 style="font-size: 2.5rem; margin-top: 0.5rem;">সাম্প্রতিক কার্যক্রম (Recent Works)</h2>
+                </div>
+                <div class="slider-nav">
+                    <button class="nav-btn" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="slider-container">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Slide 1 -->
+                    <div class="slide-card">
+                        <div class="slide-img" style="background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div class="slide-content">
+                            <span style="color: #64748b; font-size: 0.85rem;">Feb 18, 2026</span>
+                            <h4>Nationwide 5G Expansion</h4>
+                            <p>Launched the 3rd phase of high-speed 5G internet in rural districts including Tangail.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide-card">
+                        <div class="slide-img" style="background: linear-gradient(135deg, #f472b6 0%, #db2777 100%);">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="slide-content">
+                            <span style="color: #64748b; font-size: 0.85rem;">Feb 15, 2026</span>
+                            <h4>Digital Lab Inauguration</h4>
+                            <p>Opened 50 new Sheikh Russel Digital Labs in Madhupur-Dhanbari schools.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide-card">
+                        <div class="slide-img" style="background: linear-gradient(135deg, #34d399 0%, #059669 100%);">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="slide-content">
+                            <span style="color: #64748b; font-size: 0.85rem;">Feb 10, 2026</span>
+                            <h4>Meeting with Tech Leaders</h4>
+                            <p>Strategic partnership discussion with Google & Microsoft delegates in Dhaka.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="slide-card">
+                        <div class="slide-img" style="background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="slide-content">
+                            <span style="color: #64748b; font-size: 0.85rem;">Jan 25, 2026</span>
+                            <h4>Madhupur Development Plan</h4>
+                            <p>Announced new IT park project for youth employment in Tangail-1 constituency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Biography / Personal Info -->
+    <section id="bio" class="bio-section section-padding">
+        <div class="container">
+            <div class="bio-grid">
+                <div>
+                    <h2 style="font-size: 3rem; margin-bottom: 2rem; color: var(--secondary);">Political Journey</h2>
+                    <div
+                        style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(5px);">
+                        <h4 style="margin-bottom: 0.5rem; color: white;">Constituency</h4>
+                        <p style="margin-bottom: 1.5rem;">Tangail-1 (Madhupur-Dhanbari)</p>
+                        <h4 style="margin-bottom: 0.5rem; color: white;">Votes Secured (2026)</h4>
+                        <p style="font-size: 2rem; font-weight: bold; color: var(--secondary);">153,932</p>
+                    </div>
+                </div>
+                <div class="bio-text">
+                    <p><strong>Fakir Mahbub Anam Swapan</strong> is a prominent Bangladeshi politician and businessman,
+                        currently serving as the Minister of Posts, Telecommunications and Information Technology, and
+                        Minister of Science and Technology.</p>
+                    <p>Born in Tangail District, he follows in the footsteps of his father, a former MP. His political
+                        resilience led to a historic victory in the 13th General Election (Feb 2026), reclaiming the
+                        Tangail-1 seat for BNP after 45 years.</p>
+                    <p>Known for his administrative vision, he played a key role in the formation of Dhanbari Upazila in
+                        2006. Under the leadership of Prime Minister Tarique Rahman, he is now dedicated to transforming
+                        Bangladesh into a true technological powerhouse.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Interconnectedness Section -->
+    <section id="connect" class="connect-section section-padding">
+        <div class="container">
+            <div class="section-title" style="text-align: center; margin-bottom: 3rem;">
+                <span class="badge">Citizen Connect</span>
+                <h2 style="font-size: 2.5rem; color: var(--dark); margin-top: 1rem;">সরাসরি মন্ত্রীর সাথে (Direct
+                    Connect)</h2>
+                <p style="color: #64748b;">আপনার মতামত বা অভিযোগ সরাসরি মন্ত্রী মহোদয়ের দপ্তরে পৌঁছাবে।</p>
+            </div>
+            <div class="connect-grid">
+                <!-- Form -->
+                <div class="connect-form">
+                    <h3 style="margin-bottom: 1.5rem;">Send a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>আপনার নাম (Your Name)</label>
+                            <input type="text" class="form-control" placeholder="Full Name">
+                        </div>
+                        <div class="form-group">
+                            <label>মোবাইল নম্বর (Phone)</label>
+                            <input type="text" class="form-control" placeholder="017...">
+                        </div>
+                        <div class="form-group">
+                            <label>বিষয় (Subject)</label>
+                            <select class="form-control">
+                                <option>General Issue</option>
+                                <option>Corruption Report</option>
+                                <option>Development Request</option>
+                                <option>Appreciation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>বার্তা (Message)</label>
+                            <textarea class="form-control" rows="4" placeholder="Describe your issue..."></textarea>
+                        </div>
+                        <button type="button" class="btn-primary" style="width: 100%; justify-content: center;">Send
+                            Message</button>
+                    </form>
+                </div>
+                <!-- Minister's Feed/Thoughts -->
+                <div>
+                    <h3 style="margin-bottom: 1.5rem;">Minister's Desk Updates</h3>
+                    <div class="minister-feed">
+                        <div class="feed-item">
+                            <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 0.5rem;">
+                                <div style="width: 40px; height: 40px; background: #e2e8f0; border-radius: 50%;"></div>
+                                <div>
+                                    <h5 style="margin: 0;">Fakir Mahbub Anam Swapan</h5>
+                                    <small style="color: #94a3b8;">2 hours ago</small>
+                                </div>
+                            </div>
+                            <p>"Technology must serve the people. We are ensuring that every union in Tangail has
+                                high-speed fiber connectivity by 2027."</p>
+                            <div style="margin-top: 1rem; display: flex; gap: 1rem; color: #64748b; font-size: 0.9rem;">
+                                <span><i class="far fa-heart"></i> 1.2k Likes</span>
+                                <span><i class="far fa-comment"></i> 145 Comments</span>
+                            </div>
+                        </div>
+                        <div class="feed-item">
+                            <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 0.5rem;">
+                                <div style="width: 40px; height: 40px; background: #e2e8f0; border-radius: 50%;"></div>
+                                <div>
+                                    <h5 style="margin: 0;">Fakir Mahbub Anam Swapan</h5>
+                                    <small style="color: #94a3b8;">Yesterday</small>
+                                </div>
+                            </div>
+                            <p>"Met with the brilliant students of BUET today. The future of our Science & Technology
+                                sector is in safe hands."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Admin Panel Teaser -->
+    <section class="admin-section section-padding">
+        <div class="container">
+            <h2 style="margin-bottom: 2rem;">Admin Control Panel</h2>
+            <div
+                style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); max-width: 900px; margin: 0 auto; text-align: left;">
+                <div
+                    style="border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem; display: flex; justify-content: space-between;">
+                    <h4 style="color: var(--primary);">Dashboard Overview</h4>
+                    <span class="badge">Admin Logged In</span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--accent);">342</div>
+                        <div style="color: #64748b;">Pending Issues</div>
+                    </div>
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary);">1,205</div>
+                        <div style="color: #64748b;">Resolved</div>
+                    </div>
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--secondary);">56</div>
+                        <div style="color: #64748b;">Urgent</div>
+                    </div>
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #f59e0b;">28</div>
+                        <div style="color: #64748b;">To Approval</div>
+                    </div>
+                </div>
+                <button class="btn-primary" style="width: 100%; justify-content: center;">Enter Full Admin
+                    Panel</button>
+            </div>
+        </div>
+    </section>
+    <footer style="background: var(--dark); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <div style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: bold;">
+                Ministry of ICT
+            </div>
+            <p style="color: #94a3b8; margin-bottom: 2rem;">
+                Developed for the people of Bangladesh. <br>
+                © 2026 ICT Division. All rights reserved.
+            </p>
+        </div>
+    </footer>
+    <script>
+        // Simple Slider Logic
+        let currentSlide = 0;
+        const track = document.getElementById('sliderTrack');
+        const slideWidth = 350 + 32; // card width + gap
+        function moveSlide(direction) {
+            const maxSlides = 4;
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide > maxSlides - 2) currentSlide = maxSlides - 2; // Simple bound check
+            track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        }
+    </script>
+</body>
+</html>
